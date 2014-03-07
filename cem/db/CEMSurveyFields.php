@@ -2,6 +2,7 @@
 	class CEMSurveyFields{
 		public function getFields($code){
 			$fields = array(
+				'_URI' => '_URI',
 				'CEM002_START' => 'CEM002_START',
 				'CEM003_DEVICEID' => 'CEM003_DEVICEID',
 				'CEM004_END' => 'CEM004_END',
@@ -70,6 +71,7 @@
 		
 		public function getDBFields($code){
 			$fields = array(
+				'_URI' => '_uri',
 				'CEM002_START' => 'cem002_start',
 				'CEM003_DEVICEID' => 'cem003_deviceid',
 				'CEM004_END' => 'cem004_end',
