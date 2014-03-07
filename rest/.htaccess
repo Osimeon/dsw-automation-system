@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    	# Turn on URL rewriting
+	RewriteEngine On
+	
+	# Protect application and system files from being viewed
+	RewriteRule ^(application|modules|system) - [F,L]
+
+	# Allow any files or directories that exist to be displayed directly
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	
+	# Rewrite all other URLs to ms.php/
+	RewriteRule    ^externalservice/([A-Za-z0-9-]+)/?$   external-tests.php?rquest=$1   [NC,L]    #External Requests
+	RewriteRule    ^dswservice/([A-Za-z0-9-]+)/?$   service.php?rquest=$1   [NC,L]    # Process log records
+	RewriteRule    ^dswservice/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)/?$    service.php?rquest=$1&reg_no=$2   [NC,L]    # Process Log details
+	
+</IfModule>	
