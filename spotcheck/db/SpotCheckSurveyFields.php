@@ -2,6 +2,7 @@
 	class SpotCheckSurveyFields{
 		public function getFields($code){
 			$fields = array(
+			  '_URI' => '_URI',
 			  'S002_START' => 'S002_START',
 			  'S003_DEVICEID' => 'S003_DEVICEID',
 			  'S004_END' => 'S004_END',
@@ -90,6 +91,7 @@
 		
 		public function getDBFields($code){
 			$fields = array(
+			  '_URI' => '_uri',
 			  'S002_START' => 's002_start',
 			  'S003_DEVICEID' => 's003_deviceid',
 			  'S004_END' => 's004_end',

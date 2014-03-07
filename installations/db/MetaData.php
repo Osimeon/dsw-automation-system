@@ -191,7 +191,4 @@
 			}
 		 }
 	}
-	
-	$obj = new InstallationTables();
-	$obj->main();
 ?>

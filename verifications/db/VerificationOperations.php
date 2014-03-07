@@ -48,35 +48,63 @@
 			$ext = new Funcs();
 			$query_result = $ext->runQuery($selectsql,'odk_prod');
 			$numrows = pg_num_rows($query_result);
+			
 			if($numrows > 0){
 				$this->generateRows($query_result, $fields); 
 			}						
 		}
 		
+		public function checkForRecord($_uri){
+			$sql = "SELECT count(_uri) as recs FROM verification_survey.verification_survey WHERE _uri = '$_uri'";
+			$ext = new Funcs();
+			$query_result = $ext -> runQuery($sql, 'dsw_db_v2');
+			
+			while ($row = pg_fetch_array($query_result, NULL, PGSQL_ASSOC)){
+				$recs = $row['recs'];
+			}
+			
+			if($recs > 0){
+				echo('Record - $_uri Exists'.'<br/>');
+				return TRUE;
+			}
+			else{
+				echo('Record - $_uri Does Not Exist'.'<br/>');
+				return FALSE;
+			}
+		}
+		
 		public function generateRows($result, $fields){			
 			while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)){
-				$sql = "INSERT INTO verification_survey.verification_survey($fields) VALUES(";
-				$count = count($row);
-				$y = 0;
-				while ($y < $count){
-					$c_row = current($row);					
-					if(empty($c_row)){
-						$c_row = -999;
-						$c_row = pg_escape_string($c_row);
-						$sql .= " '$c_row',";
+				$_uri = $row['_URI'];
+				
+				if($this -> checkForRecord($_uri) != true){	
+					echo('New Record Found'.'<br/>');
+					$sql = "INSERT INTO verification_survey.verification_survey($fields) VALUES(";
+					$count = count($row);
+					$y = 0;
+					while ($y < $count){
+						$c_row = current($row);					
+						if(empty($c_row)){
+							$c_row = -999;
+							$c_row = pg_escape_string($c_row);
+							$sql .= " '$c_row',";
+						}
+						else{
+							$c_row = pg_escape_string($c_row);
+							$sql .= " '$c_row',";
+						}
+						next($row);
+						$y = $y + 1;
 					}
-					else{
-						$c_row = pg_escape_string($c_row);
-						$sql .= " '$c_row',";
-					}
-					next($row);
-					$y = $y + 1;
+					$sql = substr($sql, 0, -1);
+					$sql .= ")";
+					$ext = new Funcs();
+					$query_result = $ext->runQuery($sql,'dsw_db_v2');
+					$sql = "INSERT INTO verification_survey.verification_survey($fields) VALUES(";
 				}
-				$sql = substr($sql, 0, -1);
-				$sql .= ")";
-				$ext = new Funcs();
-				$query_result = $ext->runQuery($sql,'dsw_db_v2');
-				$sql = "INSERT INTO verification_survey.verification_survey($fields) VALUES(";
+				else{
+					echo('Record Already Exists In Database'.'<br/>');
+				}
 			}
 		}
 	}

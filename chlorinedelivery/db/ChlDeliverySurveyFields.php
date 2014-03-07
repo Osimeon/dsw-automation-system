@@ -2,6 +2,7 @@
 	class ChlDeliverySurveyFields{
 		public function getFields($code){
 			$fields = array(
+				'_URI' => '_URI',
 				'CR002_START' => 'CR002_START',
 				'CR003_DEVICEID' => 'CR003_DEVICEID',
 				'CR004_END' => 'CR004_END',
@@ -67,6 +68,7 @@
 		
 		public function getDBFields($code){
 			$fields = array(
+				'_URI' => '_uri',
 				'CR002_START' => 'cr002_start',
 				'CR003_DEVICEID' => 'cr003_deviceid',
 				'CR004_END' => 'cr004_end',

@@ -2,6 +2,7 @@
 	class VerificationSurveyFields{
 		public function getFields($code){
 			$fields = array(
+				'_URI' => '_URI',
 				'T002_START' => 'T002_START',
 				'T003_DEVICEID' => 'T003_DEVICEID',
 				'T004_END' => 'T004_END',
@@ -88,6 +89,7 @@
 		
 		public function getDBFields($code){
 			$fields = array(
+			  '_URI' => '_uri',
 			  'T002_START' => 't002_start',
 			  'T003_DEVICEID' => 't003_deviceid',
 			  'T004_END' => 't004_end',

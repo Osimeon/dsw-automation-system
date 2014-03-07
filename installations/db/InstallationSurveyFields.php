@@ -6,6 +6,7 @@
 		
 		public function getFields($code){
 			$fields = array(
+				'_URI' => '_URI',
 				'I002_START' => 'I002_START',
 				'I003_DEVICEID' => 'I003_DEVICEID',
 				'I004_END' => 'I004_END',
@@ -37,6 +38,7 @@
 		
 		public function getDBFields($code){
 			$fields = array(
+				'_URI' => '_uri',
 				'I002_START' => 'i002_start',
 				'I003_DEVICEID' => 'i003_deviceid',
 				'I004_END' => 'i004_end',
