@@ -1,10 +1,10 @@
 <?php
 	include '../rest/external.php'; 
 	
-	class DeliveryExport {
+	class InstallationsExport {
 		public $db;
 		public $query_result;
-		public $sql = "SELECT * FROM installation_survey.installation_survey WHERE i002_start > '2013-12-31'";
+		public $sql = "SELECT * FROM installation_survey.installation_survey WHERE i005_today > '2013-12-31'";
 		public $filename; 
 	 	public $handle;
 		
@@ -19,7 +19,7 @@
 											'i017_vil','i017a_vil_other','i101_wpt_name','i102_wpt_id','i102a_wpt_id_other',
 											'i105_disp_serial_number','i106_disp_barcode','i108_date_instaln',
 											'i109_disp_photo','i110_disp_passed_qlty_check','i107_accuracy',
-											'i107_altitude','i107_latitude','i107_longitude')); 
+											'i107_altitude','i107_latitude','i107_longitude', '_uri')); 
 								   
 			while ($row = pg_fetch_array($this -> query_result, NULL, PGSQL_ASSOC)){			
 				fputcsv($this -> handle, array($row['i002_start'],$row['i003_deviceid'],$row['i004_end'],$row['i005_today'],
@@ -28,11 +28,11 @@
 											$row['i101_wpt_name'],$row['i102_wpt_id'],$row['i102a_wpt_id_other'],
 											$row['i105_disp_serial_number'],$row['i106_disp_barcode'],$row['i108_date_instaln'],
 											$row['i109_disp_photo'],$row['i110_disp_passed_qlty_check'],$row['i107_accuracy'],
-											$row['i107_altitude'],$row['i107_latitude'],$row['i107_longitude'])); 
+											$row['i107_altitude'],$row['i107_latitude'],$row['i107_longitude'], $row['_uri'])); 
 			}			
 			fclose($this -> handle);
 		}
 	}
 	
-	$obj = new DeliveryExport();
+	$obj = new InstallationsExport();
 ?>

@@ -4,12 +4,12 @@
 	 class CEMExport {
 	 	public $db;
 		public $query_result;
-		public $sql = "SELECT * FROM chlorine_delivery_survey.chlorine_delivery_survey WHERE cr002_start >'2013-12-31'";
+		public $sql = "SELECT * FROM cem_survey.cem_survey";
 		public $filename; 
 	 	public $handle;
 		
 	 	function __construct(){
-			$this -> filename = "logs/delivery_data_".date('Y-m-d')."_".time().".csv";
+			$this -> filename = "logs/cem_data_".date('Y-m-d')."_".time().".csv";
 			$this -> db = new Funcs();	
 			$this -> query_result = $this -> db -> runQuery($this -> sql, 'dsw_db_v2');	
 			$this -> handle = fopen($this -> filename, 'w+'); 
@@ -31,7 +31,7 @@
 								   's_fa2','cem301_attendees_total','cem302a_attendees_female','cem302b_attendees_male',
 								   'cem303a_attendees_over16','cem303b_attendees_under17','cem304_challengesatcem',
 								   'cem304b_what_challenges','cem305_loudspkr_used','cem306_loudspkr_who_used',
-								   'villagecontact','s_fa3')); 
+								   'villagecontact','s_fa3', '_uri')); 
 								   
 			while ($row = pg_fetch_array($this -> query_result, NULL, PGSQL_ASSOC)){			
 				fputcsv($this -> handle, array($row['cem002_start'],$row['cem003_deviceid'],$row['cem004_end'],$row['cem005_today'],
@@ -55,7 +55,7 @@
 													$row['cem303a_attendees_over16'],$row['cem303b_attendees_under17'],
 													$row['cem304_challengesatcem'],$row['cem304b_what_challenges'],
 													$row['cem305_loudspkr_used'],$row['cem306_loudspkr_who_used'],$row['villagecontact'],
-													$row['s_fa3'])); 
+													$row['s_fa3'], $row['_uri'])); 
 			}			
 			fclose($this -> handle);
 		}	

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="test.php" server="C:/wamp/www/" local="130386626303741039" remote="130386626300000000" />
-<file name="DeliveryExport.php" server="C:/wamp/www/" local="130386637858911957" remote="130386637850000000" />
-<file name="InstallationsExport.php" server="C:/wamp/www/" local="130386657249741049" remote="130386657240000000" />
+<file name="DeliveryExport.php" server="C:/wamp/www/" local="130445412783441532" remote="130445412780000000" />
+<file name="InstallationsExport.php" server="C:/wamp/www/" local="130445412480974232" remote="130445412480000000" />
+<file name="CEMExport.php" server="C:/wamp/www/" local="130445413441279158" remote="130445413440000000" />
+<file name="SpotcheckExport.php" server="C:/wamp/www/" local="130389310714732875" remote="130389310710000000" />
+<file name="VerificationExport.php" server="C:/wamp/www/" local="130389310282118131" remote="130389310280000000" />
+<file name="VCSExport.php" server="C:/wamp/www/" local="130445411794684978" remote="130445411790000000" />
 </dwsync>

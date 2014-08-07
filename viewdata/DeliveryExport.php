@@ -32,7 +32,7 @@
 											'cr214_cl_level','cr215_cl_sampl','cr216_cl_sampl_whynot','cr217_wpt_usable',
 											'cr218_wpt_usable_whynot','cr219_dispprob','cr220_wpt_turbidity',
 											'r221_latitude','r221_longitude','r221_altitude','r221_accuracy',
-											'sig','cr005_today')); 
+											'sig','cr005_today', '_uri')); 
 								   
 			while ($row = pg_fetch_array($this -> query_result, NULL, PGSQL_ASSOC)){			
 				fputcsv($this -> handle, array($row['cr002_start'],$row['cr003_deviceid'],$row['cr004_end'],$row['cr006_surveyor_name'],
@@ -54,7 +54,7 @@
 											$row['cr214_cl_level'],$row['cr215_cl_sampl'],$row['cr216_cl_sampl_whynot'],$row['cr217_wpt_usable'],
 											$row['cr218_wpt_usable_whynot'],$row['cr219_dispprob'],$row['cr220_wpt_turbidity'],
 											$row['r221_latitude'],$row['r221_longitude'],$row['r221_altitude'],$row['r221_accuracy'],
-											$row['sig'],$row['cr005_today'])); 
+											$row['sig'],$row['cr005_today'], $row['_uri'])); 
 			}			
 			fclose($this -> handle);
 		}
