@@ -2,7 +2,8 @@
 	/**
 	 * Top Head Include For Cloud Server Database Connection
 	 */
-	include '../../rest/external.php';	
+	//include '../../rest/external.php';
+	include '/var/www/dsw-automation-system/rest/external.php';	
 	
 	#Must Extend SQLite DB To Support Local Caching
 	class CEMVillageMetaData extends SQLite3{

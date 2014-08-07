@@ -1,5 +1,6 @@
 <?php
-	include '../../rest/external.php';	
+	//include '../../rest/external.php';
+	include '/var/www/dsw-automation-system/rest/external.php';	
 	class CommunityTalkMetaData extends SQLite3{
 		function __construct(){
 			$this->open('community_talk_database.db');		

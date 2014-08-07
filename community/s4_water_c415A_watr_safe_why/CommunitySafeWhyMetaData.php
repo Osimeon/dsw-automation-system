@@ -1,5 +1,6 @@
 <?php
-	include '../../rest/external.php';	
+	//include '../../rest/external.php';
+	include '/var/www/dsw-automation-system/rest/external.php';	
 	class CommunitySafeWhyMetaData extends SQLite3{
 		function __construct(){
 			$this->open('community_safewhy_database.db');		
